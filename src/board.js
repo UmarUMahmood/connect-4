@@ -1,7 +1,7 @@
 // Clear down the elements drawn on the board.
 function clearBoard() {
-    for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
-        for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
+    for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
             document.getElementById(`row-${rowIndex}-column-${columnIndex}`).innerHTML = ""
         }
     }
@@ -10,8 +10,8 @@ function clearBoard() {
 // Populate the grid with images based on the board state.
 function setBoard(board) {
     clearBoard();
-    for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
-        for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
+    for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
             if (!board[rowIndex][columnIndex]) {
                 continue;
             }

@@ -1,5 +1,5 @@
 function isValidRowOrColumn(array) {
-    return Array.isArray(array) && (array.length === 7 || array.length === 6);
+    return Array.isArray(array) && (array.length === 6 || array.length === 7);
 }
 
 function isValidColumn(columnArray) {
@@ -43,16 +43,18 @@ function takeTurn(row, column, state) {
     turnCount = state.turnCount
     winner = state.winner
 
-    if (board[row][column] === null && winner === null) {
+    const lastColumn = board[row].lastIndexOf(null)
+
+    if (winner === null && lastColumn > -1) {
 
         console.log("Placed is not occupied")
 
         if (playerID === 1) {
 
-            board[row][column] = "red"
+            board[row][lastColumn] = "red"
             console.log("Placed a red")
         } else if (playerID === -1) {
-            board[row][column] = "yellow"
+            board[row][lastColumn] = "yellow"
             console.log("Placed a yellow")
         } else {
             console.log("Something wrong with switching players")
@@ -70,14 +72,14 @@ function takeTurn(row, column, state) {
 
         return state
     } else {
-        console.log("Placed is occupied or winner has been called. Reset for a new game.")
+        console.log("Column is full or winner has been called.")
         return state
     }
 }
 
 // Bind the click events for the grid.
-for (let rowIndex = 0; rowIndex < 6; rowIndex++) {
-    for (let columnIndex = 0; columnIndex < 7; columnIndex++) {
+for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
+    for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
         const gridPosition = document.getElementById(`row-${rowIndex}-column-${columnIndex}`);
         gridPosition.addEventListener("click", positionClick.bind(null, rowIndex, columnIndex));
     }

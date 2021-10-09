@@ -49,7 +49,7 @@ function positionClick(rowIndex, columnIndex, event) {
 
     setBoard(board);
 
-    const winner = checkWinner();
+    const winner = checkWinner(state);
 
     if (winner) {
         if (typeof winner !== "string" || !["red", "yellow", "nobody"].includes(winner)) {

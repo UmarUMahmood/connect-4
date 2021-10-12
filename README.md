@@ -5,7 +5,6 @@
 - unit test for takeTurn
 - add reset button
 - unit test for resetGame
-- add checkWinner function
 - unit test for checkWinner
 - update look and feel
 - highlight the pieces that won the game

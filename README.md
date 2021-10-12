@@ -8,3 +8,4 @@
 - add checkWinner function
 - unit test for checkWinner
 - update look and feel
+- highlight the pieces that won the game

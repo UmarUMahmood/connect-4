@@ -6,11 +6,13 @@ const state = {
     winner: null
 }
 
+clearBoard()
+
 // Clear down the elements drawn on the board.
 function clearBoard() {
     for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
         for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
-            document.getElementById(`row-${rowIndex}-column-${columnIndex}`).innerHTML = ""
+            document.getElementById(`row-${rowIndex}-column-${columnIndex}`).innerHTML = `${rowIndex}-${columnIndex}`
         }
     }
 }

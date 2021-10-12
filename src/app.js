@@ -71,6 +71,19 @@ function checkWinner(state) {
         console.log("Winner not found")
     }
 
+    if (winner === null) {
+        console.log("Checking diagonals for winners...")
+        diagonals = getDiagonals(board)
+        // console.log(diagonals)
+        for (let i = 0; i < 12; i++) {
+            winner = checkArray(diagonals[i])
+            if (winner != null) {
+                return winner
+            }
+        }
+        console.log("Winner not found")
+    }
+
     if (turnCount === 42) {
         console.log("Can't play more pieces - DRAW")
         winner = "nobody"
@@ -108,6 +121,76 @@ function checkArray(array) {
     return null
 }
 
+function getDiagonals(board) {
+
+    // this array will hold all the different diagonal lines
+    const diagonals = []
+
+    for (let initialRow = 0; initialRow < 4; initialRow++) {
+        // console.log("Starting on row: ", initialRow)
+
+        // this array will be used for each single diagonal line
+        let diagonal = []
+
+        for (let rowIndex = initialRow, columnIndex = 0; rowIndex < 7; rowIndex++, columnIndex++) {
+            // console.log("I found piece: ", `${rowIndex}-${columnIndex}`)
+            let piece = board[rowIndex][columnIndex]
+            if (typeof piece !== "undefined") {
+                diagonal.push(piece)
+            }
+        }
+        // console.log(diagonal)
+        diagonals.push(diagonal)
+    }
+
+    for (let initialColumn = 2; initialColumn > 0; initialColumn--) {
+        // console.log("Starting on column: ", initialColumn)
+        let diagonal = []
+
+        for (let rowIndex = 0, columnIndex = initialColumn; rowIndex < 6; rowIndex++, columnIndex++) {
+            // console.log("I found piece: ", `${rowIndex}-${columnIndex}`)
+            let piece = board[rowIndex][columnIndex]
+            if (typeof piece !== "undefined") {
+                diagonal.push(piece)
+            }
+        }
+        // console.log(diagonal)
+        diagonals.push(diagonal)
+    }
+
+    for (let initialRow = 3; initialRow < 6; initialRow++) {
+        // console.log("Starting on row: ", initialRow)
+        let diagonal = []
+
+        for (let rowIndex = initialRow, columnIndex = 0; columnIndex < (initialRow + 1); rowIndex--, columnIndex++) {
+            // console.log("I found piece: ", `${rowIndex}-${columnIndex}`)
+            let piece = board[rowIndex][columnIndex]
+            if (typeof piece !== "undefined") {
+                diagonal.push(piece)
+            }
+        }
+        // console.log(diagonal)
+        diagonals.push(diagonal)
+    }
+
+    for (let initialColumn = 0; initialColumn < 3; initialColumn++) {
+        // console.log("Starting on column: ", initialColumn)
+        let diagonal = []
+
+        for (let rowIndex = 6, columnIndex = initialColumn; columnIndex < 6; rowIndex--, columnIndex++) {
+            // console.log("I found piece: ", `${rowIndex}-${columnIndex}`)
+            let piece = board[rowIndex][columnIndex]
+            if (typeof piece !== "undefined") {
+                diagonal.push(piece)
+            }
+        }
+        // console.log(diagonal)
+        diagonals.push(diagonal)
+    }
+
+    return diagonals
+}
+
 function setState(board, playerID, turnCount, winner) {
     state.board = board
     state.playerID = playerID
@@ -122,7 +205,8 @@ if (typeof exports === 'object') {
     module.exports = {
         takeTurn,
         checkWinner,
-        checkArray
+        checkArray,
+        setState
     }
 } else {
     console.log("Running in Browser")

@@ -1,0 +1,28 @@
+{
+  "name": "connect-4",
+  "version": "1.0.0",
+  "description": "- unit test for takeTurn\r - add reset button\r - unit test for resetGame\r - unit test for checkWinner\r - update look and feel\r - highlight the pieces that won the game",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UmarUMahmood/connect-4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UmarUMahmood/connect-4/issues"
+  },
+  "homepage": "https://github.com/UmarUMahmood/connect-4#readme",
+  "devDependencies": {
+    "jest": "^27.2.5"
+  },
+  "dependencies": {
+    "@types/jest": "^27.0.2"
+  }
+}

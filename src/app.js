@@ -191,6 +191,18 @@ function getDiagonals(board) {
     return diagonals
 }
 
+function resetGame() {
+
+    let state = {
+        board: Array(7).fill().map(() => Array(6).fill(null, 0, 6)), // generate 2D array of given size
+        playerID: 1,
+        turnCount: 0,
+        winner: null
+    }
+
+    return state
+}
+
 function setState(board, playerID, turnCount, winner) {
     state.board = board
     state.playerID = playerID
@@ -206,7 +218,8 @@ if (typeof exports === 'object') {
         takeTurn,
         checkWinner,
         checkArray,
-        setState
+        setState,
+        resetGame
     }
 } else {
     console.log("Running in Browser")

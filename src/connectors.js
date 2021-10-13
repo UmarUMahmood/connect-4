@@ -1,5 +1,5 @@
 // initial state
-const state = {
+let state = {
     board: Array(7).fill().map(() => Array(6).fill(null, 0, 6)), // generate 2D array of given size
     playerID: 1,
     turnCount: 0,
@@ -64,6 +64,15 @@ function positionClick(rowIndex, columnIndex, event) {
     }
 }
 
+function resetClick(event) {
+    state = resetGame();
+    const winnerName = document.getElementById("winner-name");
+    winnerName.innerText = "";
+    const winnerDisplay = document.getElementById("winner-display");
+    winnerDisplay.style.display = "None";
+    clearBoard();
+}
+
 // Bind the click events for the grid.
 for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
     for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
@@ -71,6 +80,10 @@ for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
         gridPosition.addEventListener("click", positionClick.bind(null, rowIndex, columnIndex));
     }
 }
+
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", resetClick);
+
 
 if (typeof exports === 'object') {
     console.log("Running in Node")
@@ -80,6 +93,7 @@ if (typeof exports === 'object') {
         isValidRowOrColumn,
         isValidColumn,
         positionClick,
+        resetClick
     }
 } else {
     console.log("Running in Browser")

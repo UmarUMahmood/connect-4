@@ -12,7 +12,7 @@ clearBoard()
 function clearBoard() {
     for (let rowIndex = 0; rowIndex < 7; rowIndex++) {
         for (let columnIndex = 0; columnIndex < 6; columnIndex++) {
-            document.getElementById(`row-${rowIndex}-column-${columnIndex}`).innerHTML = `${rowIndex}-${columnIndex}`
+            document.getElementById(`row-${rowIndex}-column-${columnIndex}`).innerHTML = ""
         }
     }
 }

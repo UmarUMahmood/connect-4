@@ -2,8 +2,6 @@
 
 ## To-do List
 
-- unit test for takeTurn
-- add reset button
 - unit test for resetGame
 - unit test for checkWinner
 - update look and feel
